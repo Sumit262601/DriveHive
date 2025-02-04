@@ -1,7 +1,7 @@
 import { Home } from "lucide-react"
-import AuthImg from "@/assets/images/login-img.png"
-import { SignUpForm } from "@/app/pages/signup-form"
 import { Link } from "react-router-dom"
+import { SignUpForm } from "../pages/SignupForm"
+import AuthImg from "@/assets/images/login-img.png"
 
 export default function SignupPage() {
     return (

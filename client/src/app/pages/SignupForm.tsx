@@ -1,77 +1,30 @@
-import { useContext, useState } from "react";
-import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PasswordInput } from "../layout/input-layout";
-import { UserDataContext } from "@/context/UserContext";
-import axios from "axios";
 
-interface FormProps extends React.ComponentPropsWithoutRef<"form"> { }
 
-export function SignUpForm({ className, ...props }: FormProps) {
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [firstName, setFirstName] = useState<string>("");
-    const [lastName, setLastName] = useState<string>("");
-
-    const navigate = useNavigate();
-    const UserContext = useContext(UserDataContext);
-    if (!UserContext) {
-        throw new Error("UserContext must be used within a UserProvider");
-    }
-
-    const { setUser } = UserContext;
-
-    const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        const newUser = {
-            fullname: {
-                firstName: firstName.trim(),
-                lastName: lastName.trim(),
-            },
-            email: email.trim(),
-            password: password,
-        };
-
-        try {
-            const response = await axios.post(
-                `${import.meta.env.VITE_BASE_URL}/user/register`,
-                newUser
-            );
-
-            if (response.status === 201) {
-                const data = response.data;
-                console.log(data);
-                setUser(data.user);
-                localStorage.setItem("token", data.token);
-                navigate("/dashboard");
-            }
-
-            // Reset form fields
-            setEmail("");
-            setFirstName("");
-            setLastName("");
-            setPassword("");
-        } catch (error) {
-            console.error("Registration failed:", error);
-            alert("Error during registration. Please try again.");
-        }
-    };
+export function SignUpForm({
+    className,
+    ...props
+}: React.ComponentPropsWithoutRef<"form">) {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     return (
         <form
-            onSubmit={submitHandler}
-            className={cn("flex flex-col gap-6", className)}
-            {...props}
+            className={cn("flex flex-col gap-6", className)} {...props}
         >
             <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Create your account!</h1>
-                <p className="text-balance text-sm text-muted-foreground">
+                {/* <p className="text-balance text-sm text-muted-foreground">
                     Account
-                </p>
+                </p> */}
             </div>
 
             <div className="grid gap-6">
