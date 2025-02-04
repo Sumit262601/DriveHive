@@ -3,6 +3,7 @@ import { StoragePieChart } from '@/charts/storage-chart'
 import { Progress } from "@/components/ui/progress"
 import { StorageBarChart } from "@/charts/bar-chart";
 import { StorageAreaChart } from "@/charts/area-chart";
+import DataTable from "../../data/Table"
 
 const Dashboard = () => {
   return (
@@ -40,7 +41,7 @@ const Dashboard = () => {
 
       <div className="flex lg:flex-row flex-col gap-4 mb-6">
         <div className="rounded-xl w-full">
-          <StoragePieChart />
+          <DataTable />
         </div>
         <div className="w-full lg:w-full">
           <StorageAreaChart />

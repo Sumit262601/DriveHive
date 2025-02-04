@@ -68,8 +68,8 @@ export default function Page() {
   const { component, title } = renderContent();
 
   return (
-    <SidebarProvider className="">
-      <AppSidebar className="" />
+    <SidebarProvider >
+      <AppSidebar />
       <SidebarInset>
         <header className="group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 flex items-center gap-2 mb-2 border-b-2 h-16 transition-[width,height] ease-linear shrink-0">
           <div className="flex justify-between items-center gap-2 px-4 w-full">
