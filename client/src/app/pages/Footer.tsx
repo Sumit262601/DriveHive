@@ -1,6 +1,10 @@
 const Footer = () => {
     return (
-        <h2>slkdvjok</h2>
+        <div className="">
+            <div className="">
+                <h1>Footer</h1>
+            </div>
+        </div>
     )
 }
 

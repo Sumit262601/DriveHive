@@ -91,8 +91,10 @@ export default function Page() {
             <DarkModeToggle />
           </div>
         </header>
-        <div className="p-6">
-          {component}
+        <div className="flex flex-col p-6 justify-between min-h-screen">
+          <div className="flex-grow">
+            {component}
+          </div>
           <Footer />
         </div>
       </SidebarInset>
